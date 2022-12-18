@@ -7,6 +7,13 @@ This repository presents a real-time CFD solver based on a "rough" representatio
 - drag-and-drop obstacles
 - postprocessing using: scalars (pressure, velocity, tracer), streamlines and velocity vectors
 
+## Tutorial
+
+![](doc/turorial_v0.01beta.mkv)
+
+<video width="800" height="400" controls>
+  <source src="doc/turorial_v0.01beta.mkv" type="video/mp4">
+</video>
 
 ## License
 This project is licensed under the GPL-3 license.
