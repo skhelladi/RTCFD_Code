@@ -9,10 +9,8 @@ This repository presents a real-time CFD solver based on a "rough" representatio
 
 ## Tutorial
 
-![](doc/turorial_v0.01beta.mkv)
-
 <video width="800" height="400" controls>
-  <source src="doc/turorial_v0.01beta.mkv" type="video/mp4">
+  <source src="doc/turorial_v0.01beta.mp4" type="video/mp4">
 </video>
 
 ## License
