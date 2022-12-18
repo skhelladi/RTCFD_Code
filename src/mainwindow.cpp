@@ -5,7 +5,10 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
+
     ui->setupUi(this);
+
+    QCoreApplication::setApplicationVersion(VERSION);
     //    shared_ptr<region> s(new region(100,100,1.1));
     region = make_shared<Region>(ui->widget->height(),ui->widget->width(),1.);
     region->setupRegion(-1,1.9);
@@ -164,5 +167,24 @@ void MainWindow::on_comboBox_scalars_currentIndexChanged(int index)
         break;
     }
     }
+}
+
+
+void MainWindow::on_toolButton_clicked()
+{
+    QString about_text;
+        int yy,mm,dd;
+        QDate date;
+        date=QDate::currentDate();
+        date.getDate(&yy,&mm,&dd);
+        QString sdate=QString::number(dd)+"."+QString::number(mm)+"."+QString::number(yy);
+
+        about_text=QCoreApplication::applicationName()+" "+
+                QCoreApplication::applicationVersion()+"\n\n"+
+                "- Built in "+sdate+" under GPL3 LICENSE\n"+
+                "- Based on Qt "+QT_VERSION_STR+"\n\n"+
+                "Author:\n- Sofiane KHELLADI <sofiane.khelladi@ensam.eu>";
+
+        QMessageBox::about(this, "About RTCFD Code",about_text);
 }
 

@@ -4,8 +4,11 @@
 #include <QMainWindow>
 #include <QTimer>
 #include <QString>
+#include <QDate>
+#include <QMessageBox>
 #include "region.h"
 
+#define VERSION "0.01beta"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -38,6 +41,8 @@ private slots:
     void on_checkBox_objectposition_clicked(bool checked);
 
     void on_comboBox_scalars_currentIndexChanged(int index);
+
+    void on_toolButton_clicked();
 
 private:
     Ui::MainWindow *ui;
