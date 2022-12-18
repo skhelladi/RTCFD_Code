@@ -8,10 +8,9 @@ This repository presents a real-time CFD solver based on a "rough" representatio
 - postprocessing using: scalars (pressure, velocity, tracer), streamlines and velocity vectors
 
 ## Tutorial
-![](https://github.com/skhelladi/RTCFD_Code/blob/master/doc/turorial_v0.01beta.mp4)
 
 <video width="800" height="400" controls>
-  <source src="https://github.com/skhelladi/RTCFD_Code/blob/master/doc/turorial_v0.01beta.mp4" type="video/mp4">
+  <source src="https://raw.githubusercontent.com/skhelladi/RTCFD_Code/master/doc/turorial_v0.01beta.mp4?token=GHSAT0AAAAAAB4LBJC4SSSK33OHP2REGCG6Y47D2PA" type="video/mp4">
 </video>
 
 ## License
