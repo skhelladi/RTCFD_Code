@@ -50,6 +50,12 @@ void Draw::paint(QPainter *_painter, QPaintEvent *event)
         double minVel = *min_element(f->Vel.begin(),f->Vel.end());
         double maxVel = *max_element(f->Vel.begin(),f->Vel.end());
 
+        double minXVel = *min_element(f->u.begin(),f->u.end());
+        double maxXVel = *max_element(f->u.begin(),f->u.end());
+
+        double minYVel = *min_element(f->v.begin(),f->v.end());
+        double maxYVel = *max_element(f->v.begin(),f->v.end());
+
 
         vector<int> color = {255, 255, 255, 255};
 
@@ -74,11 +80,35 @@ void Draw::paint(QPainter *_painter, QPaintEvent *event)
                         color[2] = fmax(0.0, color[2] - 255 * s);
                     }
                 }
-                else if (region->showVelocities)
+                else if (region->showVelocity)
                 {
                     double s = f->m[i * n + j];
                     double Vel = f->Vel[i * n + j];
                     color = getSciColor(Vel, minVel, maxVel);
+                    if (region->showTracer)
+                    {
+                        color[0] = fmax(0.0, color[0] - 255 * s);
+                        color[1] = fmax(0.0, color[1] - 255 * s);
+                        color[2] = fmax(0.0, color[2] - 255 * s);
+                    }
+                }
+                else if (region->showXVelocity)
+                {
+                    double s = f->m[i * n + j];
+                    double Vel = f->u[i * n + j];
+                    color = getSciColor(Vel, minXVel, maxXVel);
+                    if (region->showTracer)
+                    {
+                        color[0] = fmax(0.0, color[0] - 255 * s);
+                        color[1] = fmax(0.0, color[1] - 255 * s);
+                        color[2] = fmax(0.0, color[2] - 255 * s);
+                    }
+                }
+                else if (region->showYVelocity)
+                {
+                    double s = f->m[i * n + j];
+                    double Vel = f->v[i * n + j];
+                    color = getSciColor(Vel, minYVel, maxYVel);
                     if (region->showTracer)
                     {
                         color[0] = fmax(0.0, color[0] - 255 * s);
@@ -137,7 +167,7 @@ void Draw::paint(QPainter *_painter, QPaintEvent *event)
         }
         _painter->drawImage(0, 0, image);
 
-//        cout<<region->showVelocities<<endl;
+//        cout<<region->showVelocity<<endl;
         if (region->showVelocityVectors)
         {
             double scale = 0.025;
@@ -228,16 +258,34 @@ void Draw::paint(QPainter *_painter, QPaintEvent *event)
         //        cout<<region->cX(region->obstacleX)<<" -- "<<region->cY(region->obstacleY)<<endl;
         if (region->showPressure)
         {
-            string s = "pressure: " + to_string(minP) + " - " + to_string(maxP) + " N/m";
+            string s = "pressure: " + to_string(minP) + " - " + to_string(maxP) + " Pa";
             _painter->setPen(textPen);
             _painter->setFont(textFont);
             QPointF pt(region->width/2,25);
             drawText(_painter,pt,Qt::AlignHCenter,QString::fromStdString(s));
         }
 
-        if (region->showVelocities)
+        if (region->showVelocity)
         {
             string s = "velocity: " + to_string(minVel) + " - " + to_string(maxVel) + " m/s";
+            _painter->setPen(textPen);
+            _painter->setFont(textFont);
+            QPointF pt(region->width/2,25);
+            drawText(_painter,pt,Qt::AlignHCenter,QString::fromStdString(s));
+        }
+
+        if (region->showXVelocity)
+        {
+            string s = "x-velocity: " + to_string(minXVel) + " - " + to_string(maxXVel) + " m/s";
+            _painter->setPen(textPen);
+            _painter->setFont(textFont);
+            QPointF pt(region->width/2,25);
+            drawText(_painter,pt,Qt::AlignHCenter,QString::fromStdString(s));
+        }
+
+        if (region->showYVelocity)
+        {
+            string s = "y-velocity: " + to_string(minYVel) + " - " + to_string(maxYVel) + " m/s";
             _painter->setPen(textPen);
             _painter->setFont(textFont);
             QPointF pt(region->width/2,25);

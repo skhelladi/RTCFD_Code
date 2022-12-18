@@ -24,23 +24,6 @@
     </item>
     <item row="0" column="0">
      <layout class="QGridLayout" name="gridLayout_2">
-      <item row="1" column="7">
-       <widget class="QLineEdit" name="lineEdit_overrelaxation">
-        <property name="enabled">
-         <bool>true</bool>
-        </property>
-        <property name="text">
-         <string>1.9</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="4">
-       <widget class="QLabel" name="label">
-        <property name="text">
-         <string>Resolution</string>
-        </property>
-       </widget>
-      </item>
       <item row="0" column="7">
        <widget class="QLineEdit" name="lineEdit_density">
         <property name="text">
@@ -55,6 +38,20 @@
         </property>
        </widget>
       </item>
+      <item row="0" column="6">
+       <widget class="QLabel" name="label_2">
+        <property name="text">
+         <string>Density</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QPushButton" name="pushButton">
+        <property name="text">
+         <string>Run</string>
+        </property>
+       </widget>
+      </item>
       <item row="0" column="1">
        <widget class="QComboBox" name="comboBox">
         <property name="currentIndex">
@@ -62,7 +59,7 @@
         </property>
         <item>
          <property name="text">
-          <string>Wind Tunnel (high resolution)</string>
+          <string>Tank (gravity)</string>
          </property>
         </item>
         <item>
@@ -77,12 +74,22 @@
         </item>
         <item>
          <property name="text">
-          <string>Hires Tunnel</string>
+          <string>Wind Tunnel (high resolution)</string>
          </property>
         </item>
        </widget>
       </item>
-      <item row="0" column="9">
+      <item row="0" column="3">
+       <widget class="QCheckBox" name="checkBox_tracer">
+        <property name="text">
+         <string>Tracer</string>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="10">
        <spacer name="horizontalSpacer_2">
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
@@ -95,24 +102,46 @@
         </property>
        </spacer>
       </item>
-      <item row="0" column="0">
-       <widget class="QPushButton" name="pushButton">
-        <property name="text">
-         <string>Run</string>
-        </property>
-       </widget>
-      </item>
       <item row="0" column="2">
-       <widget class="QCheckBox" name="checkBox_streamlines">
+       <widget class="QComboBox" name="comboBox_scalars">
+        <item>
+         <property name="text">
+          <string>&lt;Scalar&gt;</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Pressure</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Velocity magnitude</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>X-Velocity</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Y-Velocity</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="0" column="4">
+       <widget class="QLabel" name="label">
         <property name="text">
-         <string>Streamlines</string>
+         <string>Resolution</string>
         </property>
        </widget>
       </item>
-      <item row="0" column="6">
-       <widget class="QLabel" name="label_2">
+      <item row="0" column="5">
+       <widget class="QLineEdit" name="lineEdit_resolution">
         <property name="text">
-         <string>Density</string>
+         <string>50</string>
         </property>
        </widget>
       </item>
@@ -123,10 +152,17 @@
         </property>
        </widget>
       </item>
-      <item row="0" column="5">
-       <widget class="QLineEdit" name="lineEdit_resolution">
+      <item row="1" column="3">
+       <widget class="QCheckBox" name="checkBox_streamlines">
         <property name="text">
-         <string>50</string>
+         <string>Streamlines</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="4">
+       <widget class="QCheckBox" name="checkBox_velocityVectors">
+        <property name="text">
+         <string>Velocity vectors</string>
         </property>
        </widget>
       </item>
@@ -140,42 +176,58 @@
         </property>
        </widget>
       </item>
-      <item row="0" column="3">
-       <widget class="QCheckBox" name="checkBox_velocityVectors">
+      <item row="1" column="7">
+       <widget class="QLineEdit" name="lineEdit_overrelaxation">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
         <property name="text">
-         <string>Velocity vectors</string>
+         <string>1.9</string>
         </property>
        </widget>
       </item>
-      <item row="1" column="1">
+      <item row="1" column="2">
        <widget class="QCheckBox" name="checkBox_objectposition">
         <property name="text">
          <string>Object position</string>
         </property>
        </widget>
       </item>
-      <item row="1" column="2">
-       <widget class="QCheckBox" name="checkBox_tracer">
-        <property name="text">
-         <string>Tracer</string>
+      <item row="1" column="1">
+       <widget class="QComboBox" name="comboBox_obstacles">
+        <property name="currentIndex">
+         <number>1</number>
         </property>
-        <property name="checked">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="3">
-       <widget class="QCheckBox" name="checkBox_velocities">
-        <property name="text">
-         <string>Velocity</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="4">
-       <widget class="QCheckBox" name="checkBox_pressure">
-        <property name="text">
-         <string>Pressure</string>
-        </property>
+        <item>
+         <property name="text">
+          <string>&lt;Obstacles&gt;</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Cylinder</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Square</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Diamond</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>NACA</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Rotor</string>
+         </property>
+        </item>
        </widget>
       </item>
      </layout>

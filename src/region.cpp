@@ -67,7 +67,9 @@ void Region::setupRegion(int _RegionNr, double _overRelaxation, int _resolution,
         this->showPressure = true;
         this->showTracer = false;
         this->showStreamlines = false;
-        this->showVelocities = false;
+        this->showVelocity = false;
+        this->showXVelocity = false;
+        this->showYVelocity = false;
         this->showVelocityVectors = false;
         this->showObstacle=true;
         this->showObstaclePosition=false;
@@ -106,7 +108,9 @@ void Region::setupRegion(int _RegionNr, double _overRelaxation, int _resolution,
         this->showPressure = false;
         this->showTracer = true;
         this->showStreamlines = false;
-        this->showVelocities = false;
+        this->showVelocity = false;
+        this->showXVelocity = false;
+        this->showYVelocity = false;
         this->showVelocityVectors = false;
 
 
@@ -125,7 +129,9 @@ void Region::setupRegion(int _RegionNr, double _overRelaxation, int _resolution,
         this->showPressure = false;
         this->showTracer = true;
         this->showStreamlines = false;
-        this->showVelocities = false;
+        this->showVelocity = false;
+        this->showXVelocity = false;
+        this->showYVelocity = false;
         this->showVelocityVectors = false;
         this->obstacleRadius = 0.075;
         this->showObstacle=true;
@@ -135,7 +141,7 @@ void Region::setupRegion(int _RegionNr, double _overRelaxation, int _resolution,
     }
 
     //    document.getElementById("streamButton").checked = this->showStreamlines;
-    //    document.getElementById("velocityButton").checked = this->showVelocities;
+    //    document.getElementById("velocityButton").checked = this->showVelocity;
     //    document.getElementById("pressureButton").checked = this->showPressure;
     //    document.getElementById("smokeButton").checked = this->showTracer;
     //    document.getElementById("overrelaxButton").checked = this->overRelaxation > 1.0;

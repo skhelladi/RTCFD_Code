@@ -38,7 +38,9 @@ public:
     bool showObstacle= false;
     bool showObstaclePosition=false;
     bool showStreamlines= false;
-    bool showVelocities= false;
+    bool showVelocity= false;
+    bool showXVelocity= false;
+    bool showYVelocity= false;
     bool showVelocityVectors= false;
     bool showPressure= false;
     bool showTracer= true;

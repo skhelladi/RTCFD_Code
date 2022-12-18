@@ -25,11 +25,7 @@ public:
 private slots:
     void on_pushButton_clicked();
 
-    void on_checkBox_velocities_clicked(bool checked);
-
     void on_checkBox_streamlines_clicked(bool checked);
-
-    void on_checkBox_pressure_clicked(bool checked);
 
     void on_checkBox_overrelaxation_clicked(bool checked);
 
@@ -40,6 +36,8 @@ private slots:
     void on_checkBox_tracer_clicked(bool checked);
 
     void on_checkBox_objectposition_clicked(bool checked);
+
+    void on_comboBox_scalars_currentIndexChanged(int index);
 
 private:
     Ui::MainWindow *ui;

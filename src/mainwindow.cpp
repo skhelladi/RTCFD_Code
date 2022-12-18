@@ -36,7 +36,7 @@ void MainWindow::simulate()
 void MainWindow::update()
 {
     simulate();
-//    draw();
+    //    draw();
     //requestAnimationFrame(update());
 }
 
@@ -44,9 +44,7 @@ void MainWindow::on_pushButton_clicked()
 {
     int regionNr = ui->comboBox->currentIndex();
     ui->widget->region->showStreamlines = ui->checkBox_streamlines->isChecked();
-    ui->widget->region->showVelocities = ui->checkBox_velocities->isChecked();
     ui->widget->region->showVelocityVectors = ui->checkBox_velocityVectors->isChecked();
-    ui->widget->region->showPressure = ui->checkBox_pressure->isChecked();
     ui->widget->region->showTracer= ui->checkBox_tracer->isChecked();
     ui->widget->region->overRelaxation = ui->lineEdit_overrelaxation->text().toDouble();
     ui->widget->region->resolution = ui->lineEdit_resolution->text().toInt();
@@ -61,14 +59,12 @@ void MainWindow::on_pushButton_clicked()
         ui->widget->region->setupRegion(regionNr, ui->widget->region->overRelaxation,ui->widget->region->resolution,ui->widget->region->fluid->density);
 
         ui->checkBox_streamlines->setChecked(ui->widget->region->showStreamlines);
-        ui->checkBox_velocities->setChecked(ui->widget->region->showVelocities);
         ui->checkBox_velocityVectors->setChecked(ui->widget->region->showVelocityVectors);
-        ui->checkBox_pressure->setChecked(ui->widget->region->showPressure);
         ui->checkBox_tracer->setChecked(ui->widget->region->showTracer);
         ui->checkBox_objectposition->setChecked(ui->widget->region->showObstaclePosition);
 
         compute=false;
-//        ui->widget->region->paused=false;
+        //        ui->widget->region->paused=false;
         ui->pushButton->setText("Stop");
         ui->widget->region->paused = false;
         ui->checkBox_pause->setChecked(false);
@@ -78,7 +74,7 @@ void MainWindow::on_pushButton_clicked()
     else
     {
         timer->stop();
-//        ui->widget->region->paused=true;
+        //        ui->widget->region->paused=true;
         compute=true;
         ui->pushButton->setText("Run");
         ui->widget->region->paused = true;
@@ -88,42 +84,15 @@ void MainWindow::on_pushButton_clicked()
     update();
 }
 
-
-void MainWindow::on_checkBox_velocities_clicked(bool checked)
-{
-    ui->widget->region->showVelocities = checked;
-
-    if(ui->checkBox_pressure->isChecked())
-    {
-        ui->checkBox_pressure->setChecked(!checked);
-        ui->widget->region->showPressure = !checked;
-    }
-//    update();
-}
-
-
 void MainWindow::on_checkBox_streamlines_clicked(bool checked)
 {
     ui->widget->region->showStreamlines = checked;
 }
 
 
-void MainWindow::on_checkBox_pressure_clicked(bool checked)
-{
-    ui->widget->region->showPressure = checked;
-
-    if(ui->checkBox_velocities->isChecked())
-    {
-        ui->checkBox_velocities->setChecked(!checked);
-        ui->widget->region->showVelocities = !checked;
-    }
-}
-
-
-
 void MainWindow::on_checkBox_overrelaxation_clicked(bool checked)
 {
-   ui->widget->region->overRelaxation = (!checked)?1.0:ui->lineEdit_overrelaxation->text().toDouble();
+    ui->widget->region->overRelaxation = (!checked)?1.0:ui->lineEdit_overrelaxation->text().toDouble();
 }
 
 
@@ -148,5 +117,52 @@ void MainWindow::on_checkBox_tracer_clicked(bool checked)
 void MainWindow::on_checkBox_objectposition_clicked(bool checked)
 {
     ui->widget->region->showObstaclePosition= checked;
+}
+
+void MainWindow::on_comboBox_scalars_currentIndexChanged(int index)
+{
+    switch(index)
+    {
+    case 0: // no selection
+    {
+        ui->widget->region->showPressure = false;
+        ui->widget->region->showVelocity = false;
+        ui->widget->region->showXVelocity = false;
+        ui->widget->region->showYVelocity = false;
+        break;
+    }
+    case 1: // pressure
+    {
+        ui->widget->region->showPressure = true;
+        ui->widget->region->showVelocity = false;
+        ui->widget->region->showXVelocity = false;
+        ui->widget->region->showYVelocity = false;
+        break;
+    }
+    case 2: // velocity magnitude
+    {
+        ui->widget->region->showPressure = false;
+        ui->widget->region->showVelocity = true;
+        ui->widget->region->showXVelocity = false;
+        ui->widget->region->showYVelocity = false;
+        break;
+    }
+    case 3: // x-velocity
+    {
+        ui->widget->region->showPressure = false;
+        ui->widget->region->showVelocity = false;
+        ui->widget->region->showXVelocity = true;
+        ui->widget->region->showYVelocity = false;
+        break;
+    }
+    case 4: // y-velocity
+    {
+        ui->widget->region->showPressure = false;
+        ui->widget->region->showVelocity = false;
+        ui->widget->region->showXVelocity = false;
+        ui->widget->region->showYVelocity = true;
+        break;
+    }
+    }
 }
 
