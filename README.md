@@ -9,9 +9,7 @@ This repository presents a real-time CFD solver based on a "rough" representatio
 
 ## Tutorial
 
-<video width="800" height="400" controls>
-  <source src="https://raw.githubusercontent.com/skhelladi/RTCFD_Code/master/doc/turorial_v0.01beta.mp4?token=GHSAT0AAAAAAB4LBJC4SSSK33OHP2REGCG6Y47D2PA" type="video/mp4">
-</video>
+[![Tutorial](https://img.youtube.com/vi/gvOE69KHmwU/0.jpg)](https://www.youtube.com/watch?v=gvOE69KHmwU)
 
 ## License
 This project is licensed under the GPL-3 license.
